@@ -1,11 +1,9 @@
-
-
-        function init_onlyyou(){
-            // 初始化两个div的高度
+function init_onlyyou(){
+            // Inicializar la altura de los dos divs
             $("#div_onlyyou").css({"height":$(window).height()+260+"px"});
             $("#div_oy_inner").css({"height":$(window).height()+260+"px"});
 
-            // 设置自定义背景
+            // Configurar fondo personalizado
             var start_bg_img=start_content['bg_img'];
             if(typeof(start_content['bg_style'])!='undefined' && start_content['bg_style']=='bg_custom'){
                 if(typeof(start_bg_img)!='undefined' && start_bg_img!=''){
@@ -15,19 +13,19 @@
 
 
             if(typeof(start_content['chase_title'])!='undefined' && start_content['chase_title']!=''){
-                $('.div_oy_text h1').html(start_content['chase_title']); //加载自定义内容
+                $('.div_oy_text h1').html(start_content['chase_title']); //Cargar contenido personalizado
             }else{
-                $('.div_oy_text h1').html('做我女朋友好不好'); //设置默认值
+                $('.div_oy_text h1').html('¿Quieres ser mi novia?'); //Establecer valor por defecto
             }
 
             if(typeof(start_content['chase_text'])!='undefined' && start_content['chase_text']!=''){ 
-                $('.div_oy_text .p_oy_text').html(start_content['chase_text']); //加载自定义内容
-            }else{ //设置默认值
-                $('.div_oy_text .p_oy_text').html('小可爱，我喜欢你好久了。不只是遇见你，即使只是想起你，都会让我小鹿突突地乱撞。我一定会好好地疼你，你做我女朋友好不好？');
+                $('.div_oy_text .p_oy_text').html(start_content['chase_text']); //Cargar contenido personalizado
+            }else{ //Establecer valor por defecto
+                $('.div_oy_text .p_oy_text').html('Cariño, me gustas desde hace mucho tiempo. No es solo verte, incluso el hecho de pensar en ti hace que mi corazón lata con fuerza. Te cuidaré mucho, ¿quieres ser mi novia?');
             }
             
-            // 设置正文之前的照片
-            if(typeof(start_content['img_bool'])!='undefined' && start_content['img_bool']=='img_true'){ //如果设置了照片就显示
+            // Configurar la foto antes del texto principal
+            if(typeof(start_content['img_bool'])!='undefined' && start_content['img_bool']=='img_true'){ //Si se configuró una foto, mostrarla
                 if(typeof(start_content['img_src'])!='undefined' && start_content['img_src']!=''){
                     $(".img_oy_text").attr('src', start_content['img_src']);
                 }
@@ -40,42 +38,42 @@
 
 
         var array_oy_benefit; 
-        //加载内容或设置默认值
+        //Cargar contenido o establecer valores por defecto
         if(typeof(start_content['chase_benefit'])!='undefined'){
             array_oy_benefit=start_content['chase_benefit']; 
             // array_oy_benefit = array_oy_benefit.filter(function (s) {
-            //     return s && s.trim(); // 去掉空值
-            // }); //全空作品，但是却定义了key的情况
+            //      return s && s.trim(); // Eliminar valores vacíos
+            // }); //Caso donde el trabajo está vacío pero la clave está definida
             if(array_oy_benefit[0]==''){
-                array_oy_benefit[0]='我会把全部工资都给你';
+                array_oy_benefit[0]='Te daré todo mi sueldo';
             }
             if(array_oy_benefit[1]==''){
-                array_oy_benefit[1]='每天做好吃的给你';
+                array_oy_benefit[1]='Te cocinaré cosas ricas todos los días';
             }
             if(array_oy_benefit[2]==''){
-                array_oy_benefit[2]='你睡不着时给你讲故事';
+                array_oy_benefit[2]='Te contaré cuentos cuando no puedas dormir';
             }
             if(array_oy_benefit[3]==''){
-                array_oy_benefit[3]='给你自由去做喜欢的事情';
+                array_oy_benefit[3]='Te daré libertad para hacer las cosas que te gustan';
             }            
         }else{
-            array_oy_benefit=['我会把全部工资都给你','每天做好吃的给你','你睡不着时给你讲故事','给你自由去做喜欢的事情'];
+            array_oy_benefit=['Te daré todo mi sueldo','Te cocinaré cosas ricas todos los días','Te contaré cuentos cuando no puedas dormir','Te daré libertad para hacer las cosas que te gustan'];
         }
         console.log(array_oy_benefit); 
         var index_text_oy=0; 
 
         var count_text_oy=array_oy_benefit.length;
-        console.log('一共有'+count_text_oy+'条件');
+        console.log('Hay un total de '+count_text_oy+' condiciones');
         function oy_show_benefit(){
             var oy_text_height=$(".div_oy_text").height();
             if(index_text_oy<count_text_oy){  
-                console.log('now the index_benefit_oy is->'+index_text_oy);                
-                console.log('now the benefit_oy is->'+array_oy_benefit[index_text_oy]);
+                console.log('Índice actual del beneficio ->'+index_text_oy);                
+                console.log('Beneficio actual ->'+array_oy_benefit[index_text_oy]);
                 $(".li_oy_benefit").eq(index_text_oy).html(array_oy_benefit[index_text_oy]).show();
-                if($(document).height()-oy_text_height<520){ //随着文字的增多，实时调整高度
+                if($(document).height()-oy_text_height<520){ //Ajustar la altura en tiempo real a medida que aumenta el texto
                     $("#div_onlyyou").css({"height":$(document).height()+160+"px"});
                     $("#div_oy_inner").css({"height":$(document).height()+"px"});
-                    console.log('update the document height +120');
+                    console.log('Actualización de la altura del documento +120');
                 } 
                 index_text_oy++;
             } else{
@@ -104,9 +102,9 @@
 
 
 
-    function random_img_as(){  //获取随机的模板图片
+    function random_img_as(){  //Obtener una imagen aleatoria de la plantilla
         // console.log('random_img_as'); 
-        var random_num=Math.floor(Math.random()*(array_as_pics_s.length)); //随机取值 
+        var random_num=Math.floor(Math.random()*(array_as_pics_s.length)); //Tomar un valor al azar 
         var random_img=array_as_pics_s[random_num];
         return random_img;
-    } 
+    }
